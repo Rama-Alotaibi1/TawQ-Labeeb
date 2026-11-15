@@ -1,0 +1,652 @@
+{
+  "_meta": {
+    "project": "Labeeb - Capsule Protection System (Team TawQ)",
+    "challenge": "Flame in Freefall: SI-Powered Fire Safety Insights from Microgravity Combustion Data",
+    "purpose": "Knowledge base of NASA microgravity combustion findings. Feeds (1) simulation parameters, (2) AI analyst context, (3) Findings Explorer (summarize / rank / interpret).",
+    "status": "v0.2 - aligned with the challenge statement (PSI investigations list, habitats, attributes)",
+    "challenge_statement": "https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/"
+  },
+  "findings": [
+    {
+      "id": "SAFFIRE-I-III",
+      "experiment": "Saffire I-III (Spacecraft Fire Safety Demonstration)",
+      "platform": "Cygnus cargo vehicle, after ISS departure",
+      "years": "2016-2017",
+      "tags": [
+        "flame_spread",
+        "large_scale",
+        "airflow",
+        "vehicle_impact"
+      ],
+      "conditions": {
+        "airflow_cm_s": [
+          20,
+          25
+        ],
+        "o2_pct": 21,
+        "material": "Cotton/fiberglass (SIBAL) 94 x 40.6 cm"
+      },
+      "key_finding": "First large-scale fire set inside a spacecraft. Flames reached a steady size and spread rate instead of accelerating as on Earth. Flame speed scaled with the forced airflow velocity. Vehicle size affected the fire more than expected.",
+      "numbers": {
+        "concurrent_spread_mm_s": 1.8,
+        "o2_consumed_pct_of_vehicle": 1.5
+      },
+      "sim_use": "Flame spread rate proportional to ventilation airflow; base value 1.8 mm/s at 20 cm/s.",
+      "safety_implication": "Ventilation directly feeds and drives a microgravity fire; cutting airflow is a first-line action.",
+      "sources": [
+        "https://ntrs.nasa.gov/citations/20170008805",
+        "https://ntrs.nasa.gov/api/citations/20180005168/downloads/20180005168.pdf",
+        "https://discovery-pp.ucl.ac.uk/id/eprint/10069823/8/Ferkul_The_Saffire_Experiment_2017_US_National_Meeting_Final.pdf",
+        "https://www.nasa.gov/wp-content/uploads/2025/07/spacecraft-fire-safety-demonstration-saffire.pdf"
+      ],
+      "objective": "Flame spread, mass consumption and heat release of a large-scale fire inside a real spacecraft; verify low-g flammability limits",
+      "hardware": "Saffire Flow Unit in Cygnus (unoccupied)",
+      "fuel": "Thin cotton-fiberglass (SIBAL) sheet 94 x 40.6 cm; Saffire-II: 9 samples 5 x 30 cm (silicone, PMMA, SIBAL, Nomex)",
+      "o2": "21% (cabin air)",
+      "flow": "20-25 cm/s forced",
+      "pressure": "~101 kPa",
+      "gravity": "Microgravity",
+      "measurements": "Video, radiometers, thermocouples, O2 and CO2 sensors",
+      "habitats": [
+        "spacecraft",
+        "station"
+      ],
+      "short": "Flames reach a steady size; spread scales with airflow",
+      "o2_s": "21%",
+      "flow_s": "20–25 cm/s",
+      "g_s": "µg"
+    },
+    {
+      "id": "SAFFIRE-IV-VI",
+      "experiment": "Saffire IV-VI",
+      "platform": "Cygnus cargo vehicle",
+      "years": "2020-2023",
+      "tags": [
+        "combustion_products",
+        "CO",
+        "detection",
+        "vehicle_impact",
+        "exploration_atmosphere"
+      ],
+      "conditions": {
+        "airflow_cm_s": 20,
+        "materials": [
+          "SIBAL cloth",
+          "Cotton jersey",
+          "PMMA (thick)",
+          "Nomex"
+        ]
+      },
+      "key_finding": "Temperature and pressure rise in the vehicle were less significant than the rise in CO and CO2. Temperature rose significantly only very near the fire. Ambient CO exceeded the 24-hour crew limit in PMMA tests. HF and HCl acid gases were measured and transported through the vehicle.",
+      "numbers": {
+        "heat_release_up_to_kW": 10,
+        "co_inlet_increase_ppm_examples": [
+          1390,
+          2360
+        ]
+      },
+      "sim_use": "CO is the leading indicator; temperature sensors only react when near the source. Weight CO higher than temperature in the risk score for remote zones.",
+      "safety_implication": "Detection must rely on gas (CO) and particulates, not just temperature; post-fire cleanup matters.",
+      "sources": [
+        "https://ntrs.nasa.gov/citations/20240002981",
+        "https://ntrs.nasa.gov/api/citations/20240007488/downloads/Saffire%20ICES%202024%20Saffire%20presentation072124small.pdf",
+        "https://ntrs.nasa.gov/api/citations/20210011521/downloads/ICES%202021-266%200503-2021%20final.pdf"
+      ],
+      "objective": "Fire growth on thick fuels, impact on the vehicle, detection, monitoring and post-fire cleanup",
+      "hardware": "Saffire Flow Unit + Far Field Diagnostics in Cygnus",
+      "fuel": "SIBAL cloth, cotton jersey, PMMA slabs 0.5-1 cm, Nomex",
+      "o2": "Air and normoxic higher-O2 (exploration atmospheres)",
+      "flow": "20 cm/s forced",
+      "pressure": "Ambient and reduced",
+      "gravity": "Microgravity",
+      "measurements": "Temperature at 6 locations, CO2, CO, O2, HF, HCl, aerosols, combustion products monitor, smoke eater",
+      "habitats": [
+        "spacecraft",
+        "station",
+        "lunar_base",
+        "rover"
+      ],
+      "short": "CO rises before temperature",
+      "o2_s": "21% + higher O₂",
+      "flow_s": "20 cm/s",
+      "g_s": "µg"
+    },
+    {
+      "id": "BASS-II",
+      "experiment": "BASS-II (Burning and Suppression of Solids)",
+      "platform": "ISS Microgravity Science Glovebox",
+      "years": "2012-2013",
+      "tags": [
+        "flammability_limit",
+        "oxygen",
+        "airflow",
+        "extinction"
+      ],
+      "conditions": {
+        "airflow_cm_s_range": [
+          0,
+          55
+        ],
+        "o2_pct": "21 and below",
+        "materials": [
+          "PMMA rods/sheets/slabs",
+          "cotton-fiberglass"
+        ]
+      },
+      "key_finding": "Materials can burn at lower oxygen concentration in microgravity than in normal gravity when there is adequate ventilation. Flames extinguish at very low flow (quenching) and very high flow (blowoff).",
+      "numbers": {
+        "pmma_limiting_o2_microgravity_pct": 17,
+        "pmma_limiting_o2_1g_pct": 18
+      },
+      "sim_use": "Flammability boundary: flame sustained only if O2 above limit for the current airflow; limit is ~1 point lower in microgravity than 1g.",
+      "safety_implication": "Earth-based flammability screening (NASA-STD-6001 Test 1) may not be conservative for microgravity.",
+      "sources": [
+        "https://ntrs.nasa.gov/api/citations/20160000593/downloads/20160000593.pdf",
+        "https://link.springer.com/10.1038/s41598-017-18398-4",
+        "https://ttu-ir.tdl.org/items/1922ad9f-ef4c-4f52-96a4-980c23debe5e"
+      ],
+      "objective": "Ignition, flame growth, spread and extinction limits of solids in low-speed forced flow; bridge NASA-STD-6001 Test 1 to microgravity",
+      "hardware": "Microgravity Science Glovebox (MSG), modular fan-driven flow duct",
+      "fuel": "PMMA rods, sheets and slabs; cotton-fiberglass fabric",
+      "o2": "21% and below (N2 dilution)",
+      "flow": "0-55 cm/s",
+      "pressure": "~101 kPa",
+      "gravity": "Microgravity",
+      "measurements": "Video and digital still imaging",
+      "habitats": [
+        "spacecraft",
+        "station",
+        "lunar_base",
+        "mars_base",
+        "rover"
+      ],
+      "short": "Burns at lower O₂ in microgravity (17% vs 18%)",
+      "o2_s": "≤ 21%",
+      "flow_s": "0–55 cm/s",
+      "g_s": "µg"
+    },
+    {
+      "id": "SOFIE",
+      "experiment": "SoFIE (Solid Fuel Ignition and Extinction): GEL, MIST, SMuRF",
+      "platform": "ISS Combustion Integrated Rack",
+      "years": "2023-present",
+      "tags": [
+        "ignition",
+        "extinction",
+        "exploration_atmosphere",
+        "suppression_by_flow_reduction"
+      ],
+      "conditions": {
+        "airflow_cm_s": 20,
+        "o2_pct_start": 17.5,
+        "material": "PMMA sphere 4 cm"
+      },
+      "key_finding": "Studies ignition and extinction of real spacecraft materials in exploration atmospheres. Radiative quenching observed when flow velocity drops below about 2 cm/s. Goals include optimal suppression by diluents, flow reduction and venting.",
+      "numbers": {
+        "quench_flow_cm_s": 2
+      },
+      "sim_use": "If ventilation is cut below ~2 cm/s, flame enters quenching regime (supports 'stop ventilation' recommendation).",
+      "safety_implication": "Flow reduction is a valid suppression method in microgravity.",
+      "sources": [
+        "https://ntrs.nasa.gov/api/citations/20200000361/downloads/20200000361.pdf",
+        "https://science.nasa.gov/biological-physical/investigations/sofie-mist"
+      ],
+      "objective": "Ignition and flammability of solid spacecraft materials in exploration atmospheres; suppression by diluents, flow reduction, venting",
+      "hardware": "SoFIE insert in Combustion Integrated Rack (CIR)",
+      "fuel": "PMMA sphere 4 cm (GEL), PMMA cylinders (MIST), engineering materials (SMuRF)",
+      "o2": "Variable incl. space exploration atmospheres (e.g. 17.5% start in GEL)",
+      "flow": "Variable (20 cm/s in GEL)",
+      "pressure": "Variable (reduced)",
+      "gravity": "Microgravity",
+      "measurements": "3 cameras + ACME camera, gas composition",
+      "habitats": [
+        "spacecraft",
+        "station",
+        "lunar_base",
+        "mars_base",
+        "rover"
+      ],
+      "short": "Flame quenches below ~2 cm/s flow",
+      "o2_s": "Variable",
+      "flow_s": "Variable",
+      "g_s": "µg"
+    },
+    {
+      "id": "FLEX",
+      "experiment": "FLEX (Flame Extinguishment Experiment)",
+      "platform": "ISS Combustion Integrated Rack",
+      "years": "2009-2011+",
+      "tags": [
+        "suppression",
+        "diluent",
+        "extinction",
+        "cool_flames"
+      ],
+      "conditions": {
+        "o2_pct_range": [
+          12,
+          30
+        ],
+        "diluents": [
+          "CO2",
+          "He",
+          "N2"
+        ],
+        "pressure_atm": [
+          0.7,
+          3.0
+        ]
+      },
+      "key_finding": "Measured how inert diluents (CO2, He) extinguish flames in microgravity. Discovered 'cool flames': after the visible flame went out, large heptane droplets kept burning invisibly.",
+      "numbers": {
+        "loi_methanol_pct": [
+          12,
+          13
+        ],
+        "loi_heptane_pct": 15
+      },
+      "sim_use": "Suppression verification must not rely on optical flame detection alone; keep monitoring temperature and CO after apparent extinction.",
+      "safety_implication": "A fire can look extinguished but still burn: verify with gas and temperature before declaring safe.",
+      "sources": [
+        "https://link.springer.com/doi/10.1007/s12217-014-9372-2",
+        "https://ntrs.nasa.gov/citations/20130014061",
+        "https://ntrs.nasa.gov/citations/20150023456"
+      ],
+      "objective": "Inert-gas suppressant efficacy and limiting oxygen index for droplet flames",
+      "hardware": "Multi-user Droplet Combustion Apparatus (MDCA) in CIR",
+      "fuel": "Single droplets: heptane, methanol (1.5-4 mm)",
+      "o2": "12-30%",
+      "flow": "Quiescent",
+      "pressure": "0.7-3 atm",
+      "gravity": "Microgravity",
+      "measurements": "Backlit droplet view, orthogonal flame view, radiometers",
+      "habitats": [
+        "spacecraft",
+        "station"
+      ],
+      "short": "Flames can keep burning invisibly (cool flames)",
+      "o2_s": "12–30%",
+      "flow_s": "Quiescent",
+      "g_s": "µg"
+    },
+    {
+      "id": "SAME",
+      "experiment": "SAME / SAME-2 (Smoke Aerosol Measurement Experiment)",
+      "platform": "ISS Microgravity Science Glovebox",
+      "years": "2007, 2010",
+      "tags": [
+        "detection",
+        "smoke",
+        "particles",
+        "pre_fire",
+        "electronics"
+      ],
+      "conditions": {
+        "mode": "overheating below ignition point",
+        "materials": [
+          "Teflon",
+          "Kapton",
+          "cellulose",
+          "silicone rubber",
+          "Pyrell"
+        ]
+      },
+      "key_finding": "Smoke from overheated spacecraft materials is mostly below 500 nm. The ISS light-scattering detector often missed the small particles from Teflon and Kapton, which are used extensively in electronics, the most likely fire source in space.",
+      "numbers": {
+        "particle_diameter_nm_max_typical": 500
+      },
+      "sim_use": "Particle sensor for electronics zones should track small (sub-micron) particles; pre-fire overheating produces smoke before flame.",
+      "safety_implication": "Electronics bay needs detectors tuned for Teflon/Kapton smoke, plus CO.",
+      "sources": [
+        "https://www.nist.gov/node/1863886",
+        "https://www.nasa.gov/wp-content/uploads/2025/07/smoke-aerosol-measurement-experiment-same.pdf",
+        "https://ntrs.nasa.gov/api/citations/20170000248/downloads/20170000248.pdf"
+      ],
+      "objective": "Smoke particle size from overheated spacecraft materials to design better smoke detectors",
+      "hardware": "MSG; SAME and SAME-R hardware",
+      "fuel": "Teflon, Kapton, cellulose, silicone rubber, Pyrell (heated below ignition)",
+      "o2": "Cabin air",
+      "flow": "Controlled",
+      "pressure": "~101 kPa",
+      "gravity": "Microgravity",
+      "measurements": "Aerosol moment instruments, TEM grids, ISS and Shuttle smoke detectors, P-Trak (from DAFT)",
+      "habitats": [
+        "spacecraft",
+        "station",
+        "lunar_base",
+        "mars_base",
+        "rover"
+      ],
+      "short": "Smoke appears before flame (< 500 nm)",
+      "o2_s": "21%",
+      "flow_s": "Controlled",
+      "g_s": "µg"
+    },
+    {
+      "id": "ISS-FDS",
+      "experiment": "ISS Fire Detection and Suppression (operational)",
+      "platform": "ISS",
+      "years": "operational",
+      "tags": [
+        "response_procedure",
+        "ventilation",
+        "power",
+        "suppression"
+      ],
+      "conditions": {},
+      "key_finding": "ISS fire response: turn off ventilation, remove power from the affected unit, then use extinguishers (CO2 on US segment). Smoke detectors are placed in the ventilation system because smoke does not rise.",
+      "numbers": {},
+      "sim_use": "Defines the recommended action sequence shown in the AI popup: 1) stop ventilation, 2) cut power, 3) release suppressant.",
+      "safety_implication": "Labeeb's recommendations align with NASA's operational fire response.",
+      "sources": [
+        "https://ntrs.nasa.gov/api/citations/20030053429/downloads/20030053429.pdf",
+        "https://corpora.tika.apache.org/base/docs/govdocs1/640/640410.html"
+      ],
+      "objective": "Operational fire detection, isolation, suppression and recovery on ISS",
+      "hardware": "ISS smoke detectors in ventilation, portable CO2 extinguishers, breathing apparatus",
+      "fuel": "n/a",
+      "o2": "21%",
+      "flow": "Cabin ventilation",
+      "pressure": "101.3 kPa",
+      "gravity": "Microgravity",
+      "measurements": "Smoke detectors, combustion product analyzers",
+      "habitats": [
+        "spacecraft",
+        "station"
+      ],
+      "short": "Ventilation off → power off → extinguish",
+      "o2_s": "21%",
+      "flow_s": "Cabin",
+      "g_s": "µg"
+    },
+    {
+      "id": "EXPLORATION-ATM",
+      "experiment": "NASA Exploration Atmosphere (8.2 psia / 34% O2)",
+      "platform": "Moon to Mars habitats & vehicles",
+      "years": "2012-present",
+      "tags": [
+        "oxygen",
+        "pressure",
+        "exploration_atmosphere",
+        "scenario_range"
+      ],
+      "conditions": {
+        "pressure_kPa": 56.5,
+        "o2_pct": 34
+      },
+      "key_finding": "NASA recommends 8.2 psia / 34% O2 for Moon/Mars missions. Material flammability is the most critical hurdle in this atmosphere.",
+      "numbers": {
+        "iss_o2_pct": 21,
+        "iss_pressure_kPa": 101.3,
+        "ea_o2_pct": 34,
+        "ea_pressure_kPa": 56.5
+      },
+      "sim_use": "Scenario presets: ISS air (21% / 101 kPa) and Exploration Atmosphere (34% / 56.5 kPa). Replaces the unrealistic 61% O2.",
+      "safety_implication": "Future vehicles will run at higher O2 fraction, raising fire risk; protection layers matter more.",
+      "sources": [
+        "https://ntrs.nasa.gov/citations/20240003211",
+        "https://ntrs.nasa.gov/citations/20260003925"
+      ],
+      "objective": "Habitat atmosphere balancing EVA prebreathe, hypoxia and flammability",
+      "hardware": "n/a (requirement)",
+      "fuel": "n/a",
+      "o2": "34% (EA); suits 100%",
+      "flow": "n/a",
+      "pressure": "56.5 kPa (8.2 psia)",
+      "gravity": "Lunar / Mars surface",
+      "measurements": "n/a",
+      "habitats": [
+        "lunar_base",
+        "mars_base",
+        "rover",
+        "spacesuit"
+      ],
+      "short": "Future habitats: 34% O₂ at 56.5 kPa",
+      "o2_s": "34%",
+      "flow_s": "—",
+      "g_s": "Moon / Mars"
+    },
+    {
+      "id": "FM2",
+      "experiment": "FM2 (Flammability of Materials on the Moon)",
+      "platform": "Commercial lunar lander (CLPS)",
+      "years": "upcoming",
+      "tags": [
+        "partial_gravity",
+        "flammability_limit",
+        "lunar"
+      ],
+      "conditions": {
+        "gravity_g": 0.166,
+        "material": "SIBAL fabric and others"
+      },
+      "key_finding": "First combustion experiment planned on another planetary body. Microgravity combustion is a different regime from partial gravity; some materials may hit a buoyancy 'sweet spot' in reduced gravity where burning is sustained rather than suppressed.",
+      "numbers": {},
+      "sim_use": "Gravity selector: lunar/Mars gravity adds weak buoyant flow, so a flame can persist even with ventilation off; confidence is lowered because no flight data exists yet.",
+      "safety_implication": "Microgravity data alone does not close the lunar/Mars gap; partial-gravity worst case must be checked.",
+      "sources": [
+        "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/flammability-of-materials-on-the-moon-fm2/"
+      ],
+      "objective": "Material flammability in lunar gravity: first combustion experiment on another planetary body",
+      "hardware": "Self-contained chamber on a CLPS lunar lander",
+      "fuel": "SIBAL fabric and other materials",
+      "o2": "TBD",
+      "flow": "TBD",
+      "pressure": "TBD",
+      "gravity": "Lunar (1/6 g)",
+      "measurements": "TBD (flight pending)",
+      "habitats": [
+        "lunar_base",
+        "rover"
+      ],
+      "short": "No flight data yet for lunar gravity",
+      "o2_s": "TBD",
+      "flow_s": "TBD",
+      "g_s": "1/6 g"
+    },
+    {
+      "id": "FLARE",
+      "experiment": "FLARE (Flammability Limits At Reduced-g Experiment)",
+      "platform": "ISS (international team)",
+      "years": "current",
+      "tags": [
+        "flammability_limit",
+        "partial_gravity",
+        "test_method"
+      ],
+      "conditions": {},
+      "key_finding": "Develops a method to relate material flammability limits measured in normal gravity to microgravity.",
+      "numbers": {},
+      "sim_use": "Justifies applying a microgravity correction to Earth-measured material limits (we lower the limiting O2 by ~1 point, per BASS-II).",
+      "safety_implication": "Material screening for spacecraft needs reduced-gravity correction.",
+      "sources": [
+        "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/flammability-limits-at-reduced-g-experiment-flare/"
+      ],
+      "objective": "Relate normal-gravity flammability limits to microgravity",
+      "hardware": "ISS (international team)",
+      "fuel": "Solid materials",
+      "o2": "Variable",
+      "flow": "Variable",
+      "pressure": "Variable",
+      "gravity": "Microgravity",
+      "measurements": "Flammability limits",
+      "habitats": [
+        "spacecraft",
+        "station",
+        "lunar_base",
+        "mars_base"
+      ],
+      "short": "Links 1 g flammability limits to microgravity",
+      "o2_s": "Variable",
+      "flow_s": "Variable",
+      "g_s": "µg"
+    },
+    {
+      "id": "ACME",
+      "experiment": "ACME (Advanced Combustion via Microgravity Experiments)",
+      "platform": "ISS Combustion Integrated Rack",
+      "years": "ISS (see source)",
+      "tags": [
+        "gaseous_flames",
+        "high_oxygen",
+        "partial_gravity",
+        "material_properties"
+      ],
+      "objective": "Six gaseous-flame experiments on one modular hardware set: cleaner combustion, soot, cool flames, electric fields, burning-rate emulation",
+      "hardware": "ACME modular hardware in CIR",
+      "fuel": "Gaseous fuels (e.g. propane, methane, ethylene) on burners",
+      "o2": "Up to 85% O2 (CFI-G)",
+      "flow": "Co-flow / quiescent",
+      "pressure": "Variable",
+      "gravity": "Microgravity; E-FIELD Flames mimics partial gravity with electric fields",
+      "measurements": "Cameras, radiometers, thermocouples, gas analysis",
+      "habitats": [
+        "spacecraft",
+        "station",
+        "lunar_base",
+        "mars_base",
+        "spacesuit"
+      ],
+      "conditions": {},
+      "key_finding": "ACME's Burning Rate Emulator (BRE) burned gaseous fuels to study material flammability as a function of material properties. Cool Flames with Gases (CFI-G) ran the highest O2 in microgravity tests, with up to 85% O2 flowing from a spherical burner (inside-out flame). E-FIELD Flames used an electric field on flame ions to mimic partial gravity.",
+      "numbers": {
+        "cfi_g_o2_max_pct": 85
+      },
+      "sim_use": "High-O2 behaviour (spacesuit / exploration atmospheres) and the only PSI proxy for partial gravity (E-FIELD).",
+      "safety_implication": "Material flammability can be estimated from material properties; partial gravity can be bounded between 0 g and 1 g.",
+      "sources": [
+        "https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/",
+        "https://www.nasa.gov/wp-content/uploads/2025/07/advanced-combustion-via-microgravity-experiments-acme.pdf"
+      ],
+      "short": "Gaseous flames up to 85% O₂; partial-gravity proxy",
+      "o2_s": "up to 85%",
+      "flow_s": "Co-flow",
+      "g_s": "µg"
+    },
+    {
+      "id": "CFI-FLEX2",
+      "experiment": "CFI and FLEX-2 (Cool Flames Investigation, droplet combustion)",
+      "platform": "ISS Combustion Integrated Rack",
+      "years": "ISS (see source)",
+      "tags": [
+        "cool_flames",
+        "extinction",
+        "droplet"
+      ],
+      "objective": "Droplet burning, cool-flame chemistry and extinction of liquid fuels",
+      "hardware": "Multi-user Droplet Combustion Apparatus (MDCA) in CIR",
+      "fuel": "Liquid fuel droplets (n-alkanes, fuel blends)",
+      "o2": "Variable",
+      "flow": "Quiescent / slow",
+      "pressure": "Variable",
+      "gravity": "Microgravity",
+      "measurements": "Droplet and flame imaging, radiometers",
+      "habitats": [
+        "spacecraft",
+        "station"
+      ],
+      "conditions": {},
+      "key_finding": "Follow-on droplet campaigns in the same MDCA hardware as FLEX. Large n-alkane droplets keep burning quasi-steadily in a low-temperature 'cool flame' regime after the hot flame goes out.",
+      "numbers": {},
+      "sim_use": "Reinforces post-extinction verification with CO and temperature.",
+      "safety_implication": "Invisible low-temperature burning can follow apparent extinction.",
+      "sources": [
+        "https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/",
+        "https://ntrs.nasa.gov/api/citations/20140006750/downloads/20140006750.pdf"
+      ],
+      "short": "Cool-flame burning after the hot flame goes out",
+      "o2_s": "Variable",
+      "flow_s": "Quiescent",
+      "g_s": "µg"
+    },
+    {
+      "id": "SPICE-SLICE",
+      "experiment": "SPICE and SLICE (co-flow jet diffusion flames)",
+      "platform": "ISS Microgravity Science Glovebox",
+      "years": "ISS (see source)",
+      "tags": [
+        "gaseous_flames",
+        "soot",
+        "stability"
+      ],
+      "objective": "Smoke point, stability, lift-off and extinction of laminar jet diffusion flames",
+      "hardware": "MSG with the modular fan-driven flow duct built for SPICE",
+      "fuel": "Gaseous fuels in co-flow burners",
+      "o2": "Air",
+      "flow": "Co-flow",
+      "pressure": "~101 kPa",
+      "gravity": "Microgravity",
+      "measurements": "Color imaging, flame shape and lift-off height",
+      "habitats": [
+        "spacecraft",
+        "station"
+      ],
+      "conditions": {},
+      "key_finding": "Characterized smoke point and flame stability without buoyancy; SLICE flames have accurate numerical models. Same MSG flow duct later used by BASS and BASS-II.",
+      "numbers": {},
+      "sim_use": "Background physics for soot / smoke generation; model validation data.",
+      "safety_implication": "Soot and smoke behaviour differs in microgravity, affecting detection.",
+      "sources": [
+        "https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/",
+        "https://www.nasa.gov/wp-content/uploads/2025/07/smoke-point-in-co-flow-experiment-spice.pdf",
+        "https://www.nasa.gov/wp-content/uploads/2025/07/structure-liftoff-in-combustion-experiment-slice.pdf"
+      ],
+      "short": "Soot and flame stability without buoyancy",
+      "o2_s": "21%",
+      "flow_s": "Co-flow",
+      "g_s": "µg"
+    },
+    {
+      "id": "DAFT",
+      "experiment": "DAFT and DAFT-2 (Dust and Aerosol Measurement Feasibility Test)",
+      "platform": "ISS",
+      "years": "ISS (see source)",
+      "tags": [
+        "detection",
+        "particles",
+        "instrument"
+      ],
+      "objective": "Test whether a modified P-Trak particle counter works in microgravity",
+      "hardware": "Modified P-Trak instrument",
+      "fuel": "Ambient ISS dust",
+      "o2": "Cabin air",
+      "flow": "Cabin",
+      "pressure": "101.3 kPa",
+      "gravity": "Microgravity",
+      "measurements": "Particle counts (P-Trak)",
+      "habitats": [
+        "spacecraft",
+        "station",
+        "lunar_base",
+        "rover"
+      ],
+      "conditions": {},
+      "key_finding": "An instrument used for smoke detection in SAME / SAME-R was first used to detect dust in DAFT and DAFT-2, showing background dust must be separated from smoke.",
+      "numbers": {},
+      "sim_use": "Particle sensor baseline: background dust offset before smoke alarm.",
+      "safety_implication": "False alarms from dust must be filtered in spacecraft detectors.",
+      "sources": [
+        "https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/",
+        "https://www.nasa.gov/wp-content/uploads/2025/07/dust-and-aerosol-measurement-feasibility-test-daft.pdf"
+      ],
+      "short": "Dust must be separated from smoke in detectors",
+      "o2_s": "21%",
+      "flow_s": "Cabin",
+      "g_s": "µg"
+    }
+  ],
+  "pending": [
+    "Material decomposition / ignition temperatures for capsule-internal materials (Kapton, PTFE wire insulation, silicone, epoxy) - need sources",
+    "Microcapsule release temperature 115 C and decomposition onset 170 C - team to provide references",
+    "FK-5-1-12 (C6F12O) thermal decomposition to HF - reference",
+    "Optional: raw time-series from NASA PSI (psi.nasa.gov) for Replay mode"
+  ],
+  "habitats": {
+    "spacecraft": "Crew spacecraft",
+    "station": "Space station",
+    "lunar_base": "Lunar base",
+    "mars_base": "Mars base",
+    "rover": "Pressurized rover",
+    "spacesuit": "Spacesuit"
+  }
+}
